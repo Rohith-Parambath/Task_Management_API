@@ -32,7 +32,7 @@ A Spring Boot RESTful API for managing tasks with JWT-based authentication, per-
 1. Clone repository
    git clone https://github.com/Rohith-Parambath/Task_Management_API.git
    cd task-management-api
-2. Create .env file (see .env.sample [reference]()
+2. Create .env file (see .env.sample [reference](https://github.com/Rohith-Parambath/Task_Management_API/blob/main/.env.sample)
 3. Run the application
    ./mvnw spring-boot:run
    - The server will start on http://localhost:9876.
