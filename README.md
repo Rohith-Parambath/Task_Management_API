@@ -40,23 +40,17 @@ A Spring Boot RESTful API for managing tasks with JWT-based authentication, per-
 ## Enviroment Variable
 DB_HOST=localhost
 
-
 DB_PORT=5432
-
 
 DB_NAME=todo_db
 
-
 DB_USER=todo_user
-
 
 DB_PASSWORD=secret_password
 
 JWT_SECRET=ReplaceWithStrongRandomString
 
-
 JWT_EXPIRATION_MS=3600000
-
 
 SERVER_PORT=9876
 
@@ -70,7 +64,12 @@ SERVER_PORT=9876
   - tasks (id, user_id, title, description, status, created_at, updated_at)
 - tasks.user_id has a foreign key to users.id.
 
-
+## API Endpoints
+### Authentication
+| Method | Endpoint   | Body / Headers                  | Description                     |
+|--------|------------|---------------------------------|---------------------------------|
+| POST   | /register  | `{ "username": "...", "email": "...", "password": "..." }` | Register a new user             |
+| POST   | /login     | `{ "username" or "email": "...", "password": "..." }`       | Login and get JWT               |
 
 
 
