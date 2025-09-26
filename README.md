@@ -39,13 +39,24 @@ A Spring Boot RESTful API for managing tasks with JWT-based authentication, per-
 
 ## Enviroment Variable
 DB_HOST=localhost
+
+
 DB_PORT=5432
+
+
 DB_NAME=todo_db
+
+
 DB_USER=todo_user
+
+
 DB_PASSWORD=secret_password
 
 JWT_SECRET=ReplaceWithStrongRandomString
+
+
 JWT_EXPIRATION_MS=3600000
+
 
 SERVER_PORT=9876
 
