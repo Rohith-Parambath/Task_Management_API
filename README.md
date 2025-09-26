@@ -81,9 +81,26 @@ SERVER_PORT=9876
 
 - **Authorization:** Authorization: Bearer <JWT_TOKEN>
 
+## Rate Limiting
+- Unauthenticated endpoints: max 3 requests/min per IP
+- Authenticated endpoints: max 10 requests/min per user
+- Limit exceeded: returns HTTP 429 Too Many Requests with Retry-After header (seconds until reset).
 
+## Validation & Error Handling
+- All input is validated via annotations (@NotBlank, @Email, @Size, etc.).
+- Common error responses:
+<pre> ```json { "timestamp": "2025-09-26T23:59:59.999", "status": 400, "error": "Bad Request", "message": "Validation failed for field: title", "path": "/api/v1/tasks" } ``` </pre>
+- HTTP Status Codes:
+  - 400 → validation errors
+  - 401 → unauthorized (invalid/missing JWT)
+  - 404 → resource not found / access another user’s task
+  - 429 → rate limit exceeded
 
-
-
-
-
+## Running Tests & Manual Verification
+1. Register a new user → expect HTTP 201
+2. Login → receive JWT
+3. Create task → HTTP 201, task assigned to logged-in user
+4. List tasks → only shows own tasks
+5. Update/Delete another user’s task → HTTP 404
+6. Trigger rate limit → HTTP 429 + Retry-After header
+7. Verify server is running on port 9876
