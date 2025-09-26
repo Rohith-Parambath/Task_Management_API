@@ -71,7 +71,15 @@ SERVER_PORT=9876
 | POST   | /register  | `{ "username": "...", "email": "...", "password": "..." }` | Register a new user             |
 | POST   | /login     | `{ "username" or "email": "...", "password": "..." }`       | Login and get JWT               |
 
+### Tasks(JWT required)
+| Method | Endpoint           | Body / Headers                                                              | Description                       |
+| ------ | ------------------ | --------------------------------------------------------------------------- | --------------------------------- |
+| POST   | /api/v1/tasks      | `{ "title": "...", "description": "...", "status": "..." }` + Authorization | Create a task                     |
+| GET    | /api/v1/tasks      | Authorization                                                               | List all tasks for logged-in user |
+| PUT    | /api/v1/tasks/{id} | `{ "title"?, "description"?, "status"? }` + Authorization                   | Update a task (own tasks only)    |
+| DELETE | /api/v1/tasks/{id} | Authorization                                                               | Delete a task (own tasks only)    |
 
+- **Authorization:** Authorization: Bearer <JWT_TOKEN>
 
 
 
